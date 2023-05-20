@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: blog
-        image: nadidurna/blog:v1
+        image: nadidurna/blog:#{$(Build.BuildId)}#
         resources:
           limits:
             memory: "128Mi"
