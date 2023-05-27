@@ -9,7 +9,7 @@ spec:
   tls:
     - hosts:
         - nadidurna.com
-      secretName: cert-secret
+      secretName: tls-secret
   rules:
   - host: nadidurna.com
     http:
