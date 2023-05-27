@@ -6,8 +6,12 @@ metadata:
     name: blog
 spec:
   ingressClassName: nginx
+  tls:
+    - hosts:
+        - nadidurna.com
+      secretName: cert-secret
   rules:
-  - host: front.20.8.248.147.nip.io
+  - host: nadidurna.com
     http:
       paths:
       - pathType: Prefix
