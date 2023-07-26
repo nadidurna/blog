@@ -14,11 +14,10 @@ jobs:
     fetchDepth: 1
   - task: ReplaceInFilesTextByText@2
     inputs:
-    parameterSearchDirectory: '$(Build.SourcesDirectory)'
-    parameterSearchText: 'TAG'
-    parameterReplaceText: '$(Build.BuildId)'
-    parameterTypeOfSearch: 'filesSearchPattern'
-    parameterFilesPattern: '*.yaml'
+      parameterSearchDirectory: '$(Build.SourcesDirectory)'
+      parameterSearchText: 'TAG'
+      parameterReplaceText: '$(Build.BuildId)'
+      parameterTypeOfSearch: 'filesSearchPattern'
   - task: Docker@0
     displayName: Build an image
     inputs:
