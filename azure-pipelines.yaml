@@ -12,6 +12,13 @@ jobs:
   steps:
   - checkout: self
     fetchDepth: 1
+  - task: ReplaceInFilesTextByText@2
+    inputs:
+    parameterSearchDirectory: '$(Build.SourcesDirectory)'
+    parameterSearchText: 'TAG'
+    parameterReplaceText: '$(Build.BuildId)'
+    parameterTypeOfSearch: 'filesSearchPattern'
+    parameterFilesPattern: '*.yaml'
   - task: Docker@0
     displayName: Build an image
     inputs:
@@ -27,17 +34,4 @@ jobs:
       action: Push an image
       imageName: nadidurna/blog:$(tag)
 
-  - task: replacetokens@5
-    inputs:
-      targetFiles: 'k8s/deployment.yaml'
-      encoding: 'auto'
-      tokenPattern: 'default'
-      writeBOM: true
-      actionOnMissing: 'warn'
-      keepToken: false
-      actionOnNoFiles: 'continue'
-      enableTransforms: false
-      enableRecursion: false
-      useLegacyPattern: false
-      enableTelemetry: true
 ...
