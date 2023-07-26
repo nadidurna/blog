@@ -26,4 +26,18 @@ jobs:
       dockerRegistryEndpoint: 0e198c35-dd0e-45a0-a467-9f7beaf52fb6
       action: Push an image
       imageName: nadidurna/blog:$(tag)
+
+  - task: replacetokens@5
+    inputs:
+      targetFiles: 'k8s/deployment.yaml'
+      encoding: 'auto'
+      tokenPattern: 'default'
+      writeBOM: true
+      actionOnMissing: 'warn'
+      keepToken: false
+      actionOnNoFiles: 'continue'
+      enableTransforms: false
+      enableRecursion: false
+      useLegacyPattern: false
+      enableTelemetry: true
 ...
