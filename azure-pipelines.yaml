@@ -18,34 +18,12 @@ jobs:
       containerregistrytype: Container Registry
       dockerRegistryEndpoint: 0e198c35-dd0e-45a0-a467-9f7beaf52fb6
       dockerFile: Dockerfile
-      imageName: nadidurna/blog:$(Build.BuildId)
+      imageName: nadidurna/blog:$(tag)
   - task: Docker@0
     displayName: Push an image
     inputs:
       containerregistrytype: Container Registry
       dockerRegistryEndpoint: 0e198c35-dd0e-45a0-a467-9f7beaf52fb6
       action: Push an image
-      imageName: nadidurna/blog:$(Build.BuildId)
-  - task: Kubernetes@1
-    displayName: Set New Image
-    enabled: False
-    inputs:
-      kubernetesServiceEndpoint: 3b507b12-f225-4c4b-869e-15390ed88626
-      namespace: default
-      command: set
-      configuration: k8s/deployment.yaml
-      arguments: image deployments/blog blog=nadidurna/blog:$(Build.BuildId)
-      containerRegistryType: Container Registry
-      dockerRegistryEndpoint: 0e198c35-dd0e-45a0-a467-9f7beaf52fb6
-      forceUpdate: false
-  - task: CopyFiles@2
-    displayName: Copy Pem File
-    enabled: False
-    inputs:
-      SourceFolder: ssh
-      Contents: '**/*.pem'
-      TargetFolder: $(Build.ArtifactStagingDirectory)
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: drop'
-    enabled: False
+      imageName: nadidurna/blog:$(tag)
 ...
