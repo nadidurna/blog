@@ -1,5 +1,5 @@
 replicaCount: 2
-imageRep: nadidurna/blog
+imageRepo: nadidurna/blog
 imageTag: 91
 containerPort: 80
 servicePort: 80

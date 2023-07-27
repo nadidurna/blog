@@ -1,25 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app.kubernetes.io/name: {{ .Release.Name}}-{{ .Chart.Name}}
-    app.kubernetes.io/part-of: {{ .Chart.Name}}
-    app.kubernetes.io/version: {{ .Chart.AppVersion}}
   name: {{ .Release.Name}}-{{ .Chart.Name}}
   namespace: {{ .Release.Namespace}}
+  labels:
+    app: {{ .Release.Name}}-{{ .Chart.Name}}
 spec:
   replicas: {{ .Values.replicaCount}}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ .Release.Name}}-{{ .Chart.Name}}
-      app.kubernetes.io/part-of: {{ .Chart.Name}}
-      app.kubernetes.io/version: {{ .Chart.AppVersion}}
+      app: {{ .Release.Name}}-{{ .Chart.Name}}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ .Release.Name}}-{{ .Chart.Name}}
-        app.kubernetes.io/part-of: {{ .Chart.Name}}
-        app.kubernetes.io/version: {{ .Chart.AppVersion}}
+        app: {{ .Release.Name}}-{{ .Chart.Name}}
     spec:
       containers:
       - name: {{ .Release.Name}}-{{ .Chart.Name}}

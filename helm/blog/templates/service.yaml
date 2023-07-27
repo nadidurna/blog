@@ -6,9 +6,7 @@ metadata:
 spec:
   type: {{ .Values.serviceType }}
   selector:
-    app.kubernetes.io/name: {{ .Release.Name}}-{{ .Chart.Name}}
-    app.kubernetes.io/part-of: {{ .Chart.Name}}
-    app.kubernetes.io/version: {{ .Chart.AppVersion}}
+    app: {{ .Release.Name}}-{{ .Chart.Name}}
   ports:
   - port: {{ .Values.servicePort}}
     targetPort: {{ .Values.containerPort}}
