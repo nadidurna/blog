@@ -1,0 +1,8 @@
+replicaCount: 2
+imageRep: nadidurna/blog
+imageTag: 91
+containerPort: 80
+servicePort: 80
+serviceType: ClusterIP
+tlsSecret: tls-secret
+ingressHost: nadidurna.com
